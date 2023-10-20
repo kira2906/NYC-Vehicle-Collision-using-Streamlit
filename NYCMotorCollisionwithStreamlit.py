@@ -9,6 +9,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pydeck as pdk
+import requests  
 
 # Download data from the online dataset
 DATA_URL = "https://data.cityofnewyork.us/resource/h9gi-nx95.csv"
