@@ -10,17 +10,27 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 import requests  
+import zipfile
+from io import BytesIO
 
-# Download data from the online dataset
-DATA_URL = "https://data.cityofnewyork.us/resource/h9gi-nx95.csv"
+# Data source URL (Replace with your GitHub Raw URL)
+DATA_URL = "https://github.com/kira2906/NYC-Vehicle-Collision-using-Streamlit/raw/main/Motor_Vehicle_Collisions_-_Crashes_compressed.zip"
+
+# Download data from the GitHub repository
 response = requests.get(DATA_URL)
 
 # Check if the download was successful
 if response.status_code == 200:
-    # Create a StringIO buffer to read the CSV data
-    from io import StringIO
-    csv_data = StringIO(response.text)
-    data = pd.read_csv(csv_data)
+    # Create a BytesIO buffer to read the zipped data
+    zip_data = BytesIO(response.content)
+    
+    # Extract the data file from the zip
+    with zipfile.ZipFile(zip_data, 'r') as zip_ref:
+        # Assuming your data file is named 'data.csv' inside the zip
+        with zip_ref.open('data.csv') as data_file:
+            data = pd.read_csv(data_file)
+
+    # Now you can work with the data as usual
 else:
     st.error("Failed to download the data. Please check the URL or try again later.")
     
