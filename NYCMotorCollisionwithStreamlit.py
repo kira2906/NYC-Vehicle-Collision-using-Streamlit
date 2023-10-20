@@ -27,7 +27,7 @@ if response.status_code == 200:
     # Extract the data file from the zip
     with zipfile.ZipFile(zip_data, 'r') as zip_ref:
         # Assuming your data file is named 'data.csv' inside the zip
-        with zip_ref.open('data.csv') as data_file:
+        with zip_ref.open('Motor_Vehicle_Collisions_-_Crashes_compressed.csv') as data_file:
             data = pd.read_csv(data_file)
 
     # Now you can work with the data as usual
