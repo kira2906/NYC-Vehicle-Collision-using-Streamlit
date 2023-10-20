@@ -61,7 +61,7 @@ injured_people = st.slider("Number of persons injured in vehicle collisions", 1,
 st.map(data.query("injured_persons >= @injured_people")[["latitude", "longitude"]].dropna(how="any"))
 
 st.header("Where are the most people killed in NYC?")
-killed_people = st.slider("Number of persons killed in vehicle collisions", 1, 19)
+killed_people = st.slider("Number of persons killed in vehicle collisions", 1, 4)
 st.map(data.query("killed_persons >= @killed_people")[["latitude", "longitude"]].dropna(how="any"))
 
 st.header("How many collisions occur during a given time of day?")
