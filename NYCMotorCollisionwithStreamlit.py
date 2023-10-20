@@ -1,25 +1,14 @@
+import subprocess
+
+# Install plotly using pip
+subprocess.run(["pip", "install", "plotly"], check=True)
+
+# Now, you can import plotly and other necessary modules
+import plotly.express as px
 import streamlit as st
 import pandas as pd
 import numpy as np
 import pydeck as pdk
-
-import subprocess
-# Upgrade pip using subprocess
-subprocess.run(["/home/adminuser/venv/bin/python", "-m", "pip", "install", "--upgrade", "pip"])
-
-import subprocess
-
-# Define the pip command
-pip_command = ['pip', 'install', 'plotly']
-
-# Run the pip command as a subprocess
-try:
-    subprocess.run(pip_command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print("plotly has been successfully installed.")
-except subprocess.CalledProcessError as e:
-    print("Error while installing plotly:", e)
-    
-import plotly.express as px
 
 # Importing Data
 DATA_URL = "D:\Data Science\IBM DATA SCIENCE\Projects\Data Science Web App with Streamlit and Python\Motor_Vehicle_Collisions_-_Crashes.csv"
