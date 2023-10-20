@@ -10,9 +10,19 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 
-# Importing Data
-DATA_URL = "D:\Data Science\IBM DATA SCIENCE\Projects\Data Science Web App with Streamlit and Python\Motor_Vehicle_Collisions_-_Crashes.csv"
+# Download data from the online dataset
+DATA_URL = "https://data.cityofnewyork.us/resource/h9gi-nx95.csv"
+response = requests.get(DATA_URL)
 
+# Check if the download was successful
+if response.status_code == 200:
+    # Create a StringIO buffer to read the CSV data
+    from io import StringIO
+    csv_data = StringIO(response.text)
+    data = pd.read_csv(csv_data)
+else:
+    st.error("Failed to download the data. Please check the URL or try again later.")
+    
 # Title Section
 st.title("Motor Vehicle Collisions in New York City")
 st.markdown("This application is a Streamlit dashboard that can be used to analyze motor vehicle collisions in NYC")
