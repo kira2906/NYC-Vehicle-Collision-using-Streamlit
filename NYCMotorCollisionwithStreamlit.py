@@ -111,10 +111,11 @@ else:
     dangerous_streets = original_data.query('injured_motorists >= 1')[['on_street_name', 'injured_motorists']]
 # Group by street name and calculate the count
 dangerous_streets_count = dangerous_streets.groupby('on_street_name').count().reset_index()
-# Sort by the count in descending order
-dangerous_streets_count = dangerous_streets_count.sort_values(by=['injured_pedestrians'], ascending=False)
 # Rename the columns
 dangerous_streets_count.columns = ['Street Name', 'Number of Incidents']
+# Sort by the count in descending order
+dangerous_streets_count = dangerous_streets_count.sort_values(by=['Number of Incidents'], ascending=False)
+
 top_5_dangerous_streets = dangerous_streets_count.head(5)
 table_html = top_5_dangerous_streets.to_html(index=False, justify='center')
 st.markdown(table_html, unsafe_allow_html=True)
