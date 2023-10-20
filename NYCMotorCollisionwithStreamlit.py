@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pydeck as pdk
+
+import subprocess
+# Upgrade pip using subprocess
+subprocess.run(["/home/adminuser/venv/bin/python", "-m", "pip", "install", "--upgrade", "pip"])
 import plotly.express as px
 
 # Importing Data
