@@ -1,4 +1,9 @@
-<h1 align="center" id="title">NYC Vehicle Collision Explorer using Streamlit</h1>
+<h1 align="center" id="title">NYC Vehicle Collision Explorer using Streamlit </h1>
+<p></p>
+
+<div align="center">
+  <img src="https://media.tenor.com/Cy7rKC7i-6gAAAAC/joseph-gordon-levitt-premium-crush.gif" alt="Crush GIF">
+</div>
 
 ## Overview
 
