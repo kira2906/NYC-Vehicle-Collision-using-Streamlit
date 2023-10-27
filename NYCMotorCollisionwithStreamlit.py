@@ -89,9 +89,6 @@ Simply run this Streamlit application and explore the various sections by select
             """)
 
 
-# Data Cleansing
-@st.cache_data(persist=True)
-
 
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows, parse_dates=[['CRASH_DATE', 'CRASH_TIME']])
