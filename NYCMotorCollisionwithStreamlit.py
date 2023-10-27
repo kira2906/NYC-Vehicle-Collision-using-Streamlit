@@ -109,7 +109,7 @@ data = data[data['date/time'].dt.hour == hour]
 st.markdown(f'Vehicle collisions between {hour}:00 and {hour + 1}:00')
 
 midpoint = (np.average(data['latitude']), np.average(data['longitude']))
-st.pydeck_chart(pdk.Deck(
+st.write(pdk.Deck(
     map_style="mapbox://styles/mapbox/light-v9",
     initial_view_state={
         'latitude': midpoint[0],
