@@ -104,33 +104,16 @@ st.write("### Where are the most people killed in NYC?")
 killed_people = st.slider("Number of persons killed in vehicle collisions", 1, 4)
 st.map(data.query("killed_persons >= @killed_people")[["latitude", "longitude"]].dropna(how="any"))
 
+st.write("""
+     ---
+     ## Section 2 - In-depth Analysis of Accidents in NYC
+     """)
+
 st.write("### How many collisions occur during a given time of day?")
 hour = st.slider("Hour to look at", 0, 23)
 data = data[data['date/time'].dt.hour == hour]
 st.markdown(f'Vehicle collisions between {hour}:00 and {hour + 1}:00')
 
-midpoint = (np.average(data['latitude']), np.average(data['longitude']))
-st.write(pdk.Deck(
-    map_style="mapbox://styles/mapbox/light-v9",
-    initial_view_state={
-        'latitude': midpoint[0],
-        'longitude': midpoint[1],
-        'zoom': 11,
-        'pitch': 50,
-    },
-    layers=[
-        pdk.Layer(
-            "HexagonLayer",
-            data=data[['date/time', 'latitude', 'longitude']],
-            get_position=['longitude', 'latitude'],
-            radius=100,
-            pickable=True,
-            extruded=True,
-            elevation_scale=4,
-            elevation_range=[0, 1000],
-        ),
-    ]
-))
 st.subheader(f'Breakdown by minute between {hour}:00 and {hour + 1}:00')
 filtered = data[(data['date/time'].dt.hour >= hour) & (data['date/time'].dt.hour < (hour + 1))]
 hist = np.histogram(filtered['date/time'].dt.minute, bins=60, range=(0, 60))[0]
@@ -138,10 +121,7 @@ chart_data = pd.DataFrame({'minute': range(60), 'crashes': hist})
 fig = px.bar(chart_data, x='minute', y='crashes', hover_data=['minute', 'crashes'], height=400)
 st.write(fig)
 
-st.write("""
-     ---
-     ## Section 2 - In-depth Analysis of Accidents in NYC
-     """)
+
 
 # Section 2 - Graphical Analysis of Accidents in NYC
 st.write("### Top 5 Dangerous streets by affected type")
