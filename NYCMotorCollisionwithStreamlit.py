@@ -109,7 +109,7 @@ data = data[data['date/time'].dt.hour == hour]
 st.markdown(f'Vehicle collisions between {hour}:00 and {hour + 1}:00')
 
 midpoint = (np.average(data['latitude']), np.average(data['longitude']))
-st.write(pdk.Deck(
+st.pydeck_chart(pdk.Deck(
     map_style="mapbox://styles/mapbox/light-v9",
     initial_view_state={
         'latitude': midpoint[0],
@@ -130,7 +130,6 @@ st.write(pdk.Deck(
         ),
     ]
 ))
-
 st.subheader(f'Breakdown by minute between {hour}:00 and {hour + 1}:00')
 filtered = data[(data['date/time'].dt.hour >= hour) & (data['date/time'].dt.hour < (hour + 1))]
 hist = np.histogram(filtered['date/time'].dt.minute, bins=60, range=(0, 60))[0]
