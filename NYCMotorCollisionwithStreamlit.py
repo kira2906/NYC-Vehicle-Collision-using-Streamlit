@@ -7,7 +7,7 @@ import pydeck as pdk
 import requests
 import zipfile
 from io import BytesIO
-!pip install pydeck==0.7.1
+pip install pydeck==0.7.1
 
 # Data source URL (Replace with your GitHub Raw URL)
 DATA_URL = "https://github.com/kira2906/NYC-Vehicle-Collision-using-Streamlit/raw/main/Motor_Vehicle_Collisions_-_Crashes_compressed.zip"
