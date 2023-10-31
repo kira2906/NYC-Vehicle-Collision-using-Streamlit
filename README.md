@@ -9,6 +9,8 @@
 
 Welcome to the NYC Vehicle Collision Analysis with Streamlit project! This repository hosts a powerful and user-friendly Streamlit web application for exploring and visualizing NYC Vehicle Collision data. New York City, being a bustling metropolis, witnesses a substantial number of traffic accidents, and understanding the patterns and trends behind these collisions is crucial for safety and city planning.
 
+Link : https://nycmotoranalysis.streamlit.app/
+
 ### Key Features
 
 - **Data Exploration:** Unearth the intricacies of the NYC Vehicle Collision dataset with an intuitive and user-friendly interface. Filter, sort, and search for specific information with ease.
